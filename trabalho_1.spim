@@ -1,0 +1,97 @@
+.data
+soma_resultado: .asciiz "ADD: "
+sub_resultado: .asciiz "\nSUB: "
+and_resultado: .asciiz "\nAND: "
+or_resultado: .asciiz "\nOR: "
+xor_resultado: .asciiz "\nXOR: "
+sll_resultado: .asciiz "\nSLL(3): "
+srl_resultado: .asciiz "\nSRL(1): "
+newline: .asciiz "\n"
+
+.text
+main:
+    addi $v0, $zero, 5
+    syscall
+    move $t1,$v0
+    
+    addi $v0, $zero, 5
+    syscall
+    move $t2,$v0
+    
+    add $t3,$t1,$t2
+
+    addi $v0, $zero, 4
+    la $a0,soma_resultado
+    syscall
+
+    addi $v0, $zero, 1
+    move $a0,$t3
+    syscall
+    
+    sub $t3,$t1,$t2
+    
+    addi $v0, $zero, 4
+    la $a0,sub_resultado
+    syscall
+
+    addi $v0, $zero, 1
+    move $a0,$t3
+    syscall
+    
+    and $t3,$t1,$t2
+    
+    addi $v0, $zero, 4
+    la $a0,and_resultado
+    syscall
+
+    addi $v0, $zero, 1
+    move $a0,$t3
+    syscall
+    
+    or $t3,$t1,$t2
+    
+    addi $v0, $zero, 4
+    la $a0,or_resultado
+    syscall
+
+    addi $v0, $zero, 1
+    move $a0,$t3
+    syscall
+    
+    xor $t3,$t1,$t2
+    
+    addi $v0, $zero, 4
+    la $a0,xor_resultado 
+    syscall
+
+    addi $v0, $zero, 1
+    move $a0,$t3
+    syscall
+    
+    
+    sll $t3,$t1,3
+    
+    addi $v0, $zero, 4
+    la $a0,sll_resultado
+    syscall
+
+    addi $v0, $zero, 1
+    move $a0,$t3
+    syscall
+
+    srl $t3,$t2, 1
+    
+    addi $v0, $zero, 4
+    la $a0,srl_resultado
+    syscall
+
+    addi $v0, $zero, 1
+    move $a0,$t3
+    syscall
+
+    addi $v0, $zero, 4
+    la $a0, newline
+    syscall
+
+    addi $v0, $zero, 10
+    syscall
